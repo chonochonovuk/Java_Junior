@@ -5,9 +5,6 @@ public class Quicksort {
         this.arrayToSort = arrayToSort;
     }
 
-    public int[] getArrayToSort() {
-        return arrayToSort;
-    }
 
     public void sort(){
         quicksort(0,arrayToSort.length -1);
