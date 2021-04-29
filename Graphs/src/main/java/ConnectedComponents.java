@@ -3,12 +3,12 @@ import java.util.*;
 
 public class ConnectedComponents {
 
-    public static List<Edge> graph = new ArrayList<>();
-    public static char[][] matrix;
-    public static boolean[][] visited;
-    public static boolean[] visitedNode;
+    public List<Edge> graph = new ArrayList<>();
+    public char[][] matrix;
+    public boolean[][] visited;
+    public boolean[] visitedNode;
 
-    public static void main(String[] args) {
+    public void connectedComponents(){
         Scanner sc = new Scanner(System.in);
 
         int rows = Integer.parseInt(sc.nextLine());
@@ -17,8 +17,8 @@ public class ConnectedComponents {
         visited = new boolean[rows][];
 
         for (int i = 0; i < rows; i++) {
-           matrix[i] = sc.nextLine().toCharArray();
-           visited[i] = new boolean[matrix[i].length];
+            matrix[i] = sc.nextLine().toCharArray();
+            visited[i] = new boolean[matrix[i].length];
         }
 
         for (int i = 0; i < matrix.length; i++) {
@@ -51,7 +51,7 @@ public class ConnectedComponents {
 
     }
 
-    private static void bfs(int source) {
+    private void bfs(int source) {
         Deque<Integer> queue = new ArrayDeque<>();
         queue.offer(source);
         visitedNode[source] = true;
@@ -65,7 +65,7 @@ public class ConnectedComponents {
         }
     }
 
-    private static void dfs(int row, int col, char areaSymbol) {
+    private void dfs(int row, int col, char areaSymbol) {
         if(isOutOfBound(row,col) || visited[row][col] || matrix[row][col] != areaSymbol){
             return;
         }
@@ -95,11 +95,11 @@ public class ConnectedComponents {
         }
     }
 
-    private static boolean isInBound(int row, int col) {
+    private boolean isInBound(int row, int col) {
         return !isOutOfBound(row,col);
     }
 
-    private static boolean isOutOfBound(int row, int col) {
+    private boolean isOutOfBound(int row, int col) {
         return row < 0 || row >= matrix.length || col < 0 || col >= matrix[row].length;
     }
 }
